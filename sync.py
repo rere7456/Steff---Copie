@@ -64,7 +64,7 @@ def generate_catalog():
                 
                 # --- GÉNÉRATION DU TITRE ---
                 title = basename.replace('_', ' ').replace('-', ' ').title()
-                title = title.replace("'", "•")
+                title = title.replace("'", "•").replace("é", "e").replace("É", "E")
 
                 # Création automatique du txt si manquant
                 if not os.path.exists(full_desc_path):

@@ -19,7 +19,7 @@ const GALLERY_DATA = [
     "id": "mariages_mariage marie josé",
     "category": "mariages",
     "src": "images/mariages/mariage%20marie%20jos%C3%A9.jpg",
-    "title": "Mariage Marie José",
+    "title": "Mariage Marie Jose",
     "year": "2020",
     "description": "c'est le mariage de marie josé et du copaing"
   },
@@ -27,7 +27,7 @@ const GALLERY_DATA = [
     "id": "mariages_sortie d'église",
     "category": "mariages",
     "src": "images/mariages/sortie%20d%27%C3%A9glise.jpg",
-    "title": "Sortie D•Église",
+    "title": "Sortie D•Eglise",
     "year": "2000",
     "description": "dans le bonheur et le bonne humeur"
   },
@@ -59,7 +59,7 @@ const GALLERY_DATA = [
     "id": "creatif_quand la peinture s'éloigne",
     "category": "creatif",
     "src": "images/creatif/quand%20la%20peinture%20s%27%C3%A9loigne.jpg",
-    "title": "Quand La Peinture S•Éloigne",
+    "title": "Quand La Peinture S•Eloigne",
     "year": "2015",
     "description": "de la peinture au tableau"
   },
