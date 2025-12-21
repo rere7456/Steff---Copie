@@ -76,10 +76,12 @@ body:not(.loading) #intro-sequence { display: none; }
 
 .logo { 
     font-family: var(--font-title); 
-    font-size: 1.5rem; 
+    font-size: 1.2rem; 
     font-weight: bold; 
-    letter-spacing: -0.5px;
-    order: 2; /* Force à droite */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #000000; /* Noir pur */
+    order: 2;
 }
 
 /* Hamburger Button */
