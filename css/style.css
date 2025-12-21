@@ -151,16 +151,24 @@ body:not(.loading) #intro-sequence { display: none; }
 @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
 
 /* =========================================
-   FILTRES (Nouveau style)
+   MAIN SECTION (Fond Noir)
    ========================================= */
+main {
+    background-color: #0a0a0a;
+    color: #ffffff;
+    padding-top: 100px;
+    margin-top: -1px; /* Évite un liseré blanc entre hero et main */
+    transition: background-color 0.5s ease;
+}
+
 .filters-container {
-    margin-bottom: 60px;
+    margin-bottom: 80px;
     text-align: center;
 }
 
 .filter-list {
     list-style: none; display: inline-flex; gap: 40px;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #333;
     padding-bottom: 20px;
 }
 
@@ -170,18 +178,29 @@ body:not(.loading) #intro-sequence { display: none; }
     text-transform: uppercase;
     letter-spacing: 2px;
     cursor: pointer;
-    color: var(--accent-color);
-    transition: color 0.3s;
+    color: #888;
+    transition: all 0.3s;
     position: relative;
 }
 
 .filter-list li.active, .filter-list li:hover {
-    color: var(--text-color);
+    color: #ffffff;
     font-weight: bold;
 }
 
+.item-info {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-tech);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #aaaaaa; /* Gris clair sur fond noir */
+}
+
 /* =========================================
-   GRILLE
+   GRILLE MASONRY (CSS NATIVE)
    ========================================= */
 .container { max-width: 90%; margin: 0 auto; padding-bottom: 100px; }
 .masonry-grid { column-count: 3; column-gap: 40px; }
@@ -212,9 +231,11 @@ body:not(.loading) #intro-sequence { display: none; }
 .close-detail { position: fixed; top: 40px; right: 60px; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-color); z-index: 310; text-transform: uppercase; font-weight: bold; }
 
 footer {
-    padding: 60px; border-top: 1px solid var(--border-color);
+    background-color: #0a0a0a;
+    padding: 80px 60px; 
+    border-top: 1px solid #222;
     display: flex; justify-content: space-between;
-    font-size: 0.8rem; text-transform: uppercase; color: var(--accent-color);
+    font-size: 0.8rem; text-transform: uppercase; color: #666;
 }
 .socials a { margin-left: 20px; color: inherit; }
 
