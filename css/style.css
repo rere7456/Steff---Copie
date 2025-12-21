@@ -142,8 +142,21 @@ body:not(.loading) #intro-sequence { display: none; }
 /* =========================================
    HERO
    ========================================= */
-.hero { height: 80vh; display: flex; align-items: center; padding: 0 60px; }
-.hero-title { font-family: var(--font-title); font-size: 10vw; line-height: 0.9; margin-left: -5px; }
+.hero { 
+    height: 100vh; /* Plein écran */
+    display: flex; 
+    align-items: center; 
+    justify-content: center; /* Centrage horizontal aussi */
+    padding: 0 60px;
+    background-color: var(--bg-color);
+}
+.hero-title { 
+    font-family: var(--font-title); 
+    font-size: 10vw; 
+    line-height: 0.9; 
+    margin: 0; 
+    text-align: center; /* Centrer le texte */
+}
 .hero-title .line { display: block; opacity: 0; transform: translateY(30px); animation: reveal 1s forwards; }
 .hero-title .line:nth-child(1) { animation-delay: 0.2s; }
 .hero-title .line:nth-child(2) { animation-delay: 0.4s; }
