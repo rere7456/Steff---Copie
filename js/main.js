@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuOverlay = document.getElementById('menu-overlay');
     const detailView = document.getElementById('detail-view');
 
-    let allDescriptions = null; // Sera chargé au premier clic
+    let allDescriptions = null;
 
     // 1. INTRO
     window.addEventListener('load', () => {
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.onclick = () => { menuOverlay.classList.remove('active'); body.style.overflow = ''; };
     });
 
-    // 3. CHARGEMENT GALERIE (Léger)
+    // 3. CHARGEMENT GALERIE
     if (typeof GALLERY_ITEMS !== 'undefined') {
         renderGallery(GALLERY_ITEMS);
         setupFilters(GALLERY_ITEMS);
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. VUE DÉTAIL (Chargement optimisé de la description)
+    // 5. VUE DÉTAIL
     async function openDetail(photo) {
         document.getElementById('detail-img').src = photo.src;
         document.getElementById('detail-title').textContent = photo.title;
@@ -73,10 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
         detailView.classList.add('open');
         body.style.overflow = 'hidden';
 
-        // Chargement du fichier de descriptions seulement si nécessaire
         if (!allDescriptions) {
             try {
-                // On ajoute un timestamp (GALLERY_VERSION) pour forcer le browser à ignorer le cache
                 const v = typeof GALLERY_VERSION !== 'undefined' ? GALLERY_VERSION : Date.now();
                 const response = await fetch(`data/descriptions.json?v=${v}`);
                 allDescriptions = await response.json();
@@ -88,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (allDescriptions && allDescriptions[photo.id]) {
             descElement.innerHTML = allDescriptions[photo.id].replace(/\n/g, '<br>');
         } else {
-            descElement.textContent = "Pas de description disponible.";
+            descElement.textContent = "Description indisponible.";
         }
     }
 

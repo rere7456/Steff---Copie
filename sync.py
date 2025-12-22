@@ -3,6 +3,7 @@ import json
 import csv
 import datetime
 import urllib.parse
+import time
 
 # Configuration
 CATEGORIES = ['mariages', 'nature-paysages', 'portrait-reportages', 'urbain', 'creatif']
@@ -30,7 +31,8 @@ def save_csv(rows):
 def sync():
     existing_data = load_csv()
     final_rows = []
-    gallery_data = []
+    gallery_config = []
+    descriptions_db = {}
 
     for cat in CATEGORIES:
         img_dir = os.path.join('images', cat)
@@ -55,26 +57,30 @@ def sync():
                 
                 final_rows.append(row)
                 
-                # Encodage pour URL
                 safe_filename = urllib.parse.quote(filename)
                 img_path = f"images/{cat}/{safe_filename}"
                 
-                gallery_data.append({
+                gallery_config.append({
                     "id": filename,
                     "category": cat,
                     "src": img_path,
                     "title": row['Titre'],
-                    "year": row['Annee'],
-                    "description": row['Description'] # La description est incluse ici !
+                    "year": row['Annee']
                 })
+                descriptions_db[filename] = row['Description']
 
     save_csv(final_rows)
 
-    # On écrit TOUT dans js/data.js
-    with open('js/data.js', 'w', encoding='utf-8') as f:
-        f.write(f"const GALLERY_DATA = {json.dumps(gallery_data, indent=2, ensure_ascii=False)};")
+    version = int(time.time())
 
-    print(f"✅ Synchro terminée : {len(gallery_data)} photos intégrées avec leurs descriptions.")
+    with open('js/gallery_config.js', 'w', encoding='utf-8') as f:
+        f.write(f"const GALLERY_VERSION = {version};\n")
+        f.write(f"const GALLERY_ITEMS = {json.dumps(gallery_config, indent=2, ensure_ascii=False)};")
+    
+    with open('data/descriptions.json', 'w', encoding='utf-8') as f:
+        json.dump(descriptions_db, f, indent=2, ensure_ascii=False)
+
+    print(f"✅ Synchro terminée. Images et descriptions séparées pour plus de stabilité.")
 
 if __name__ == "__main__":
     sync()
