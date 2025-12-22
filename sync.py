@@ -1,95 +1,88 @@
 import os
 import json
+import csv
 import datetime
 import urllib.parse
 
 # Configuration
-CATEGORIES = [
-    'mariages',
-    'nature-paysages',
-    'portrait-reportages',
-    'urbain',
-    'creatif'
-]
-
+CATEGORIES = ['mariages', 'nature-paysages', 'portrait-reportages', 'urbain', 'creatif']
 IMG_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.svg', '.webp')
+CSV_FILE = 'data/portfolio.csv'
 
-def parse_txt_file(file_path):
-    data = {"date": None, "description": ""}
-    if os.path.exists(file_path):
-        with open(file_path, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
-            for line in lines:
-                line_str = line.strip()
-                if line_str.lower().startswith('date :'):
-                    data["date"] = line_str.split(':', 1)[1].strip()
-                elif line_str.lower().startswith('description :') or line_str.lower().startswith('descritpion :'):
-                    data["description"] = line_str.split(':', 1)[1].strip()
+def load_csv():
+    data = {}
+    if os.path.exists(CSV_FILE):
+        with open(CSV_FILE, 'r', encoding='utf-8-sig') as f:
+            reader = csv.DictReader(f, delimiter=';')
+            for row in reader:
+                data[row['Fichier']] = row
     return data
 
-def generate_catalog():
-    catalog = []
-    
+def save_csv(rows):
+    with open(CSV_FILE, 'w', newline='', encoding='utf-8-sig') as f:
+        fieldnames = ['Fichier', 'Categorie', 'Titre', 'Annee', 'Description']
+        writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter=';')
+        writer.writeheader()
+        writer.writerows(rows)
+
+def sync():
+    existing_data = load_csv()
+    final_rows = []
+    gallery_config = []
+    descriptions_db = {}
+
     for cat in CATEGORIES:
         img_dir = os.path.join('images', cat)
-        
-        if not os.path.exists(img_dir):
-            continue
+        if not os.path.exists(img_dir): continue
             
-        files = os.listdir(img_dir)
-        for filename in files:
+        for filename in os.listdir(img_dir):
             if filename.lower().endswith(IMG_EXTENSIONS):
-                basename = os.path.splitext(filename)[0]
+                # 1. Récupération des infos (soit du CSV, soit calculées)
+                if filename in existing_data:
+                    row = existing_data[filename]
+                else:
+                    # Nouvelle photo !
+                    full_path = os.path.join(img_dir, filename)
+                    year = datetime.datetime.fromtimestamp(os.path.getmtime(full_path)).strftime('%Y')
+                    title = os.path.splitext(filename)[0].replace('_', ' ').replace('-', ' ').title().replace("'", "•").replace("é", "e")
+                    row = {
+                        'Fichier': filename,
+                        'Categorie': cat,
+                        'Titre': title,
+                        'Annee': year,
+                        'Description': f"Description pour {title}..."
+                    }
                 
-                # Encodage du chemin pour éviter les problèmes avec les espaces
-                # Mais attention, on ne veut pas encoder les '/'
-                safe_filename = urllib.parse.quote(filename)
-                img_path = f"images/{cat}/{safe_filename}"
+                final_rows.append(row)
                 
-                desc_rel_path = f"data/{cat}/{basename}.txt"
-                full_desc_path = os.path.join('data', cat, f"{basename}.txt")
-                
-                # --- RÉCUPÉRATION DES INFOS DEPUIS LE TXT ---
-                txt_info = parse_txt_file(full_desc_path)
-                
-                # Date
-                year = txt_info["date"]
-                if not year:
-                    full_img_path = os.path.join('images', cat, filename)
-                    timestamp = os.path.getmtime(full_img_path)
-                    year = datetime.datetime.fromtimestamp(timestamp).strftime('%Y')
-                
-                # Description
-                description = txt_info["description"]
-                
-                # --- GÉNÉRATION DU TITRE ---
-                title = basename.replace('_', ' ').replace('-', ' ').title()
-                title = title.replace("'", "•").replace("é", "e").replace("É", "E")
-
-                # Création automatique du txt si manquant
-                if not os.path.exists(full_desc_path):
-                    os.makedirs(os.path.dirname(full_desc_path), exist_ok=True)
-                    with open(full_desc_path, 'w', encoding='utf-8') as f:
-                        f.write(f"date : {year}\n")
-                        f.write(f"description : Description pour {title}...")
-                    description = f"Description pour {title}..."
-
-                entry = {
-                    "id": f"{cat}_{basename}",
+                # 2. Données légères pour la grille (sans description)
+                img_path = f"images/{cat}/{urllib.parse.quote(filename)}"
+                item_id = f"img_{len(gallery_config)}"
+                gallery_config.append({
+                    "id": item_id,
                     "category": cat,
                     "src": img_path,
-                    "title": title,
-                    "year": year,
-                    "description": description
-                }
-                catalog.append(entry)
+                    "title": row['Titre'],
+                    "year": row['Annee']
+                })
                 
-    # On génère un fichier JS au lieu d'un JSON pour éviter les erreurs CORS en local
-    js_content = f"const GALLERY_DATA = {json.dumps(catalog, indent=2, ensure_ascii=False)};"
-    with open('js/data.js', 'w', encoding='utf-8') as f:
-        f.write(js_content)
-        
-    print(f"✅ Synchronisation terminée. {len(catalog)} photos trouvées et encodées dans js/data.js")
+                # 3. Base de données des descriptions (chargée plus tard)
+                descriptions_db[item_id] = row['Description']
+
+    # Sauvegarde du CSV pour l'utilisateur
+    save_csv(final_rows)
+
+    # Export pour le site
+    # Fichier 1 : Config de la grille (toujours chargé)
+    with open('js/gallery_config.js', 'w', encoding='utf-8') as f:
+        f.write(f"const GALLERY_ITEMS = {json.dumps(gallery_config, indent=2, ensure_ascii=False)};")
+    
+    # Fichier 2 : Descriptions (chargé uniquement au clic)
+    with open('data/descriptions.json', 'w', encoding='utf-8') as f:
+        json.dump(descriptions_db, f, indent=2, ensure_ascii=False)
+
+    print(f"✅ Synchro terminée : {len(gallery_config)} photos.")
+    print(f"👉 Modifiez vos textes dans {CSV_FILE}")
 
 if __name__ == "__main__":
-    generate_catalog()
+    sync()

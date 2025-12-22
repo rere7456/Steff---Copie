@@ -1,0 +1,40 @@
+[ben et josianne.webp]
+Date: 2019
+Description: c'etait simpatoch
+
+[cheveux au vent.jpg]
+Date: 2025
+Description: de l'art dans le vent
+
+[mariage marie josé.jpg]
+Date: 2020
+Description: c'est le mariage de marie josé et du copaing
+
+[sortie d'église.jpg]
+Date: 2000
+Description: dans le bonheur et le bonne humeur
+
+[lac des alpes.jpeg]
+Date: 
+Description: le beau reflet de la montagne
+
+[pommier du japon.jpg]
+Date: 
+Description: le petit pomier tout rose
+
+[les fils du renard.jpg]
+Date: 2000
+Description: cascade de couleur
+
+[quand la peinture s'éloigne.jpg]
+Date: 2015
+Description: de la peinture au tableau
+
+[tout au bord de l'eau.jpg]
+Date: 2020
+Description: dans la limite du réel
+
+
+[mouratz.jpg]
+Date: 2023
+Description: un bel homme une belle photo

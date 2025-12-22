@@ -1,2 +1,0 @@
-date : 2000
-description : cascade de couleur

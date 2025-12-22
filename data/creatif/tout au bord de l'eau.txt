@@ -1,2 +1,0 @@
-date :  2020
-description : dans la limite du réel
