@@ -76,7 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Chargement du fichier de descriptions seulement si nécessaire
         if (!allDescriptions) {
             try {
-                const response = await fetch('data/descriptions.json');
+                // On ajoute un timestamp (GALLERY_VERSION) pour forcer le browser à ignorer le cache
+                const v = typeof GALLERY_VERSION !== 'undefined' ? GALLERY_VERSION : Date.now();
+                const response = await fetch(`data/descriptions.json?v=${v}`);
                 allDescriptions = await response.json();
             } catch (e) {
                 console.error("Erreur chargement descriptions");
