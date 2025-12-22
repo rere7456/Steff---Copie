@@ -3,11 +3,12 @@ name: Auto Sync Data
 on:
   push:
     branches:
-      - main  # Ou le nom de votre branche principale
+      - main
     paths:
       - 'images/**'
       - 'data/**'
       - 'sync.py'
+  workflow_dispatch: # Permet le lancement manuel
 
 jobs:
   build:
