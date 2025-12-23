@@ -260,18 +260,18 @@ body:not(.loading) #intro-sequence { display: none; }
 }
 
 /* =========================================
-   HERO (Fixé en arrière-plan)
+   HERO (Sticky en arrière-plan)
    ========================================= */
 .hero { 
-    position: fixed; /* Reste fixe lors du scroll */
+    position: sticky; 
     top: 0; left: 0; width: 100%;
     height: 100vh;
-    z-index: 1; /* Derrière la galerie */
+    z-index: 1; 
     display: flex; 
     align-items: center; 
     padding: 0 10%; 
     background-color: var(--bg-color);
-    scroll-snap-align: start; /* Point d'ancrage */
+    scroll-snap-align: start;
 }
 .hero-title { 
     font-family: var(--font-title); 
@@ -291,6 +291,22 @@ body:not(.loading) #intro-sequence { display: none; }
 .hero-title .line:nth-child(2) { animation-delay: 0.4s; margin-left: 10vw; font-style: italic; }
 .hero-title .line:nth-child(3) { animation-delay: 0.6s; margin-left: 5vw; }
 @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+
+/* =========================================
+   MAIN SECTION (Le rideau noir qui monte)
+   ========================================= */
+main {
+    position: relative; 
+    z-index: 2; 
+    background-color: #0a0a0a;
+    color: #ffffff;
+    min-height: 100vh;
+    padding-top: 120px;
+    transition: background-color 0.5s ease;
+    scroll-margin-top: 0;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5); 
+    scroll-snap-align: start;
+}
 
 .filters-container {
     margin-bottom: 80px;
