@@ -68,9 +68,21 @@ body:not(.loading) #intro-sequence { display: none; }
    NAVBAR (Menu Hamburger + Logo Droite)
    ========================================= */
 .navbar {
-    position: fixed; top: 0; width: 100%; padding: 40px 60px;
+    position: fixed; top: 0; width: 100%; padding: 20px 60px; /* Padding un peu réduit pour le scroll */
     display: flex; justify-content: space-between; align-items: center;
     z-index: 100; color: var(--text-color);
+    background-color: transparent; /* Transparent par défaut */
+    transition: transform 0.4s ease, background-color 0.4s ease, padding 0.4s ease;
+}
+
+.navbar.hidden {
+    transform: translateY(-100%); /* Cache la barre vers le haut */
+}
+
+.navbar.scrolled {
+    background-color: #ffffff; /* Fond blanc quand on scrolle */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Légère ombre */
+    padding: 15px 60px; /* On compacte un peu */
 }
 
 .logo { 

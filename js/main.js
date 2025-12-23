@@ -114,4 +114,30 @@ document.addEventListener('DOMContentLoaded', () => {
         detailView.classList.remove('open');
         body.style.overflow = '';
     };
+
+    // 6. GESTION DU SCROLL NAVBAR
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('.navbar');
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Gestion de la couleur de fond (Blanc si on n'est pas tout en haut)
+        if (scrollTop > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        // Gestion de l'apparition/disparition
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scroll vers le bas -> On cache
+            navbar.classList.add('hidden');
+        } else {
+            // Scroll vers le haut -> On affiche
+            navbar.classList.remove('hidden');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
 });
