@@ -242,9 +242,11 @@ body:not(.loading) #intro-sequence { display: none; }
 main {
     background-color: #0a0a0a;
     color: #ffffff;
-    padding-top: 100px;
+    min-height: 100vh; /* Hauteur minimale égale à l'écran */
+    padding-top: 120px;
     margin-top: -1px; /* Évite un liseré blanc entre hero et main */
     transition: background-color 0.5s ease;
+    scroll-margin-top: 0; /* Pour que le scroll s'arrête pile au bord */
 }
 
 .filters-container {
