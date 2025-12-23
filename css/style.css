@@ -35,7 +35,6 @@
 
 html { 
     scroll-behavior: smooth; 
-    scroll-snap-type: y mandatory; /* Active le magnétisme vertical */
 }
 
 body {
@@ -260,19 +259,21 @@ body:not(.loading) #intro-sequence { display: none; }
 }
 
 /* =========================================
-   HERO (Sticky en arrière-plan)
+   HERO (Fixé en arrière-plan)
    ========================================= */
 .hero { 
-    position: sticky; 
-    top: 0; left: 0; width: 100%;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%;
     height: 100vh;
     z-index: 1; 
     display: flex; 
     align-items: center; 
     padding: 0 10%; 
     background-color: var(--bg-color);
-    scroll-snap-align: start;
 }
+
 .hero-title { 
     font-family: var(--font-title); 
     font-size: 8vw; 
@@ -298,6 +299,7 @@ body:not(.loading) #intro-sequence { display: none; }
 main {
     position: relative; 
     z-index: 2; 
+    margin-top: 100vh; /* Restore margin-top for manual parallax */
     background-color: #0a0a0a;
     color: #ffffff;
     min-height: 100vh;
@@ -305,7 +307,6 @@ main {
     transition: background-color 0.5s ease;
     scroll-margin-top: 0;
     box-shadow: 0 -10px 30px rgba(0,0,0,0.5); 
-    scroll-snap-align: start;
 }
 
 .filters-container {
