@@ -31,6 +31,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add js/data.js data/details/*.json data/portfolio.csv
+          git add js/gallery_config.js data/details/*.json data/portfolio.csv
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update portfolio data [skip ci]"
           git push
