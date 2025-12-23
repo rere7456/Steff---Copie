@@ -72,16 +72,20 @@ body:not(.loading) #intro-sequence { display: none; }
     display: flex; justify-content: space-between; align-items: center;
     z-index: 100; color: var(--text-color);
     background-color: transparent; /* Transparent par défaut */
-    transition: transform 0.4s ease, background-color 0.4s ease, padding 0.4s ease;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                background-color 0.6s ease, 
+                padding 0.6s ease,
+                opacity 0.6s ease;
 }
 
 .navbar.hidden {
     transform: translateY(-100%); /* Cache la barre vers le haut */
+    opacity: 0; /* Ajoute un fondu pour plus de douceur */
 }
 
 .navbar.scrolled {
     background-color: #ffffff; /* Fond blanc quand on scrolle */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Légère ombre */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Ombre encore plus légère */
     padding: 15px 60px; /* On compacte un peu */
 }
 
