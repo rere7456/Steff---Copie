@@ -257,13 +257,16 @@ body:not(.loading) #intro-sequence { display: none; }
 }
 
 /* =========================================
-   HERO
+   HERO (Fixé en arrière-plan)
    ========================================= */
 .hero { 
+    position: fixed; /* Reste fixe lors du scroll */
+    top: 0; left: 0; width: 100%;
     height: 100vh;
+    z-index: 1; /* Derrière la galerie */
     display: flex; 
     align-items: center; 
-    padding: 0 10%; /* Ancrage sur le premier tiers */
+    padding: 0 10%; 
     background-color: var(--bg-color);
 }
 .hero-title { 
@@ -286,16 +289,21 @@ body:not(.loading) #intro-sequence { display: none; }
 @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
 
 /* =========================================
-   MAIN SECTION (Fond Noir)
+   MAIN SECTION (Le rideau noir qui monte)
    ========================================= */
 main {
+    position: relative; /* Pour passer par dessus le hero */
+    z-index: 2; /* Niveau supérieur */
+    margin-top: 100vh; /* Pousse le contenu sous la hauteur de l'écran initial */
+    
     background-color: #0a0a0a;
     color: #ffffff;
-    min-height: 100vh; /* Hauteur minimale égale à l'écran */
+    min-height: 100vh;
     padding-top: 120px;
-    margin-top: -1px; /* Évite un liseré blanc entre hero et main */
+    
     transition: background-color 0.5s ease;
-    scroll-margin-top: 0; /* Pour que le scroll s'arrête pile au bord */
+    scroll-margin-top: 0;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5); /* Ombre pour bien séparer le blanc du noir */
 }
 
 .filters-container {
