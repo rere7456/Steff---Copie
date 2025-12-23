@@ -52,6 +52,8 @@ body {
 
 .intro-word {
     position: absolute; 
+    left: 0; 
+    width: 100%; /* Occupe toute la largeur pour que text-align:center fonctionne */
     font-family: var(--font-title); 
     font-size: 8vw;
     text-transform: uppercase; 
