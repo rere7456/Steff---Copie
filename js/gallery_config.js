@@ -1,4 +1,4 @@
-const GALLERY_VERSION = 1766515174;
+const GALLERY_VERSION = 1766515412;
 const GALLERY_ITEMS = [
   {
     "id": "ben_et_josianne.webp",
@@ -38,8 +38,8 @@ const GALLERY_ITEMS = [
   },
   {
     "id": "mouratz.jpg",
-    "category": "portrait-reportages",
-    "src": "images/portrait-reportages/mouratz.jpg",
+    "category": "reportages",
+    "src": "images/reportages/mouratz.jpg",
     "title": "Mouratz"
   },
   {

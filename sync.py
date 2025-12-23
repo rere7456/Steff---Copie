@@ -6,7 +6,7 @@ import urllib.parse
 import time
 
 # Configuration
-CATEGORIES = ['mariages', 'nature-paysages', 'portrait-reportages', 'urbain', 'creatif']
+CATEGORIES = ['mariages', 'nature-paysages', 'reportages', 'urbain', 'creatif']
 IMG_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.svg', '.webp')
 CSV_FILE = 'data/portfolio.csv'
 DETAILS_DIR = 'data/details'
