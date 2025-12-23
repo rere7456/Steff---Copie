@@ -58,48 +58,44 @@ body {
     opacity: 0; 
     color: var(--text-color);
     white-space: nowrap;
+    text-align: center; /* Centrage du texte */
     will-change: transform, filter, letter-spacing, opacity;
 }
 
-/* Séquence : Mot 1 puis Mot 2 */
+/* Séquence : Mot 1 (Recherche de focus type A) */
 .word-1 { 
-    animation: opticFocus 2.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
+    animation: opticFocusHunt1 3s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
     animation-delay: 0.2s; 
 }
 
+/* Séquence : Mot 2 (Recherche de focus type B - Différente) */
 .word-2 { 
-    animation: opticFocus 2.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
+    animation: opticFocusHunt2 3.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
     animation-delay: 2.8s; 
     font-style: italic; 
     text-transform: none; 
 }
 
-/* L'animation qui imite la mise au point d'une lentille */
-@keyframes opticFocus {
-    0% {
-        filter: blur(25px);
-        transform: scale(1.1);
-        opacity: 0;
-        letter-spacing: 10px; /* Le texte est "étalé" dans le flou */
-    }
-    30% {
-        filter: blur(0px); /* Le point est fait */
-        transform: scale(1);
-        opacity: 1;
-        letter-spacing: 0px; /* Retour à la normale */
-    }
-    80% {
-        filter: blur(0px);
-        transform: scale(1);
-        opacity: 1;
-        letter-spacing: 0px;
-    }
-    100% {
-        filter: blur(15px); /* On repart dans le flou */
-        transform: scale(0.95); /* Léger recul */
-        opacity: 0;
-        letter-spacing: -2px;
-    }
+/* Animation A : Hésitation rapide puis net */
+@keyframes opticFocusHunt1 {
+    0% { filter: blur(30px); transform: scale(1.15); opacity: 0; letter-spacing: 15px; }
+    20% { filter: blur(10px); transform: scale(1.05); opacity: 0.6; letter-spacing: 5px; }
+    35% { filter: blur(2px); transform: scale(1.01); opacity: 0.9; letter-spacing: 1px; } /* Presque net */
+    45% { filter: blur(6px); transform: scale(1.03); opacity: 0.8; letter-spacing: 3px; } /* On reperd un peu le point */
+    60% { filter: blur(0px); transform: scale(1); opacity: 1; letter-spacing: 0px; } /* NET ! */
+    85% { filter: blur(0px); transform: scale(1); opacity: 1; letter-spacing: 0px; } /* Reste net */
+    100% { filter: blur(20px); transform: scale(0.9); opacity: 0; letter-spacing: -2px; }
+}
+
+/* Animation B : Approche plus lente, dépassement puis net */
+@keyframes opticFocusHunt2 {
+    0% { filter: blur(40px); transform: scale(0.8); opacity: 0; letter-spacing: 20px; }
+    30% { filter: blur(5px); transform: scale(1.02); opacity: 0.8; letter-spacing: 2px; }
+    40% { filter: blur(0px); transform: scale(1.05); opacity: 1; letter-spacing: 0px; } /* Dépassement du point (trop net/gros) */
+    50% { filter: blur(3px); transform: scale(1.02); opacity: 0.9; letter-spacing: 1px; } /* Correction */
+    65% { filter: blur(0px); transform: scale(1); opacity: 1; letter-spacing: 0px; } /* NET ! */
+    90% { filter: blur(0px); transform: scale(1); opacity: 1; letter-spacing: 0px; }
+    100% { filter: blur(15px); transform: scale(1.1); opacity: 0; letter-spacing: 5px; }
 }
 
 body:not(.loading) #intro-sequence { display: none; }
