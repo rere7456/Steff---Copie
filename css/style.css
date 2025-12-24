@@ -228,8 +228,10 @@ body:not(.loading) #intro-sequence { display: none; }
 
 .info-mail {
     font-family: var(--font-title);
-    font-size: 1.5rem; color: #fff;
-    text-decoration: none; margin-bottom: 30px;
+    font-size: 1.2rem; color: #fff; /* Réduit de 1.5rem à 1.2rem pour l'email long */
+    text-decoration: none; margin-bottom: 10px;
+    display: block;
+    word-break: break-all; /* Sécurité pour mobile */
     transition: opacity 0.3s;
 }
 .info-mail:hover { opacity: 0.7; }
