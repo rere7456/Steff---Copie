@@ -424,11 +424,14 @@ html, body {
     .close-detail {
         position: static !important;
         order: 2 !important;
-        align-self: center !important;
-        margin: 20px 0 !important;
-        padding: 10px 20px !important;
-        border: 1px solid #333 !important;
+        align-self: flex-end !important; /* Décalé à droite */
+        margin: 15px 30px !important; /* Marges pour le placement */
+        padding: 0 !important; /* Supprime le "carré" */
+        border: none !important; /* Supprime la bordure */
         width: fit-content !important;
+        font-size: 1rem !important;
+        text-decoration: underline; /* Optionnel: léger soulignement pour le clic */
+        opacity: 0.8;
     }
     .text-wrapper {
         order: 3 !important;
@@ -442,7 +445,7 @@ html, body {
     .detail-view.fullscreen-mode .close-detail {
         order: 2 !important;
         color: #fff !important;
-        border-color: #fff !important;
+        border: none !important;
     }
     .detail-view.fullscreen-mode .image-wrapper {
         order: 1 !important;
