@@ -319,91 +319,36 @@ body:not(.loading) #intro-sequence { display: none; }
     .text-wrapper { padding: 60px 30px; }
 }
 
-/* TEST MOBILE ACTIF (Caché par défaut) */
-#test-mobile-box {
-    display: none;
-}
-
 @media (max-width: 900px) {
-    #test-mobile-box {
-        display: flex;
-        position: fixed;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        width: 250px; height: 250px;
-        background: red;
-        color: white;
-        border: 5px solid white;
-        z-index: 10000;
-        justify-content: center;
-        align-items: center;
-        font-weight: bold;
-        text-align: center;
-        font-size: 1.5rem;
-    }
     /* Base */
-    .container { max-width: 90%; padding-bottom: 60px; }
+    .container { max-width: 95% !important; padding-bottom: 60px; }
     
     /* Navbar */
-    .navbar { padding: 20px; }
-    .logo { font-size: 1rem; }
+    .navbar { padding: 20px !important; }
 
-    /* Hero */
-    .hero { padding: 0 5%; }
-    .hero-title { font-size: 13vw; /* Plus gros pour impact max */ }
-
-    /* Menu Overlay (Empilé pour lisibilité) */
-    .menu-grid { grid-template-columns: 1fr; gap: 15px; }
-    .menu-overlay { padding: 80px 20px; overflow-y: auto; }
-    .menu-block { min-height: 120px; } /* Hauteur mini pour le doigt */
-    .block-title { font-size: 1.8rem; }
-    
-    /* Filtres (Aérés pour le tactile) */
-    .filters-container { margin-bottom: 20px; }
-    .filter-list { gap: 10px; flex-wrap: wrap; justify-content: center; border-bottom: none; }
-    .filter-list li { padding: 5px 10px; font-size: 0.85rem; }
-
-    /* Galerie (2 colonnes) */
-    .masonry-grid { column-count: 2; column-gap: 15px; }
-    .grid-item { margin-bottom: 15px; }
-    .item-info { font-size: 0.7rem; margin-top: 5px; }
-
-    /* About Section (Condensée) */
-    .about-section { padding: 60px 0; }
-    .about-title { font-size: 2.2rem; margin-bottom: 20px; }
-    .desktop-text { display: none; }
-    .mobile-text { display: block; }
-    .about-text .body-text p { font-size: 1.1rem; line-height: 1.5; margin-bottom: 15px; }
-
-    /* Contact & Form */
-    .contact-section { padding: 60px 0; }
-    .contact-title { font-size: 4.5rem; margin-bottom: 30px; } /* Grossi le mot Contact */
-    .contact-form input, .contact-form textarea { font-size: 1.1rem; padding: 15px 0; }
-    .submit-btn { padding: 18px; }
-
-    /* Footer (Ajusté) */
-    footer {
-        padding: 40px 15px;
-        flex-direction: column;
-        gap: 30px;
-        text-align: center;
+    /* Galerie (FORCÉ À 2 COLONNES) */
+    .masonry-grid { 
+        column-count: 2 !important; 
+        column-gap: 15px !important; 
+        display: block !important;
     }
-    .copyright { 
-        align-self: center; 
-        order: 2; 
-        margin-top: 20px; 
-        font-size: 0.75rem;
-        width: 100%;
-        text-align: center;
+    .grid-item { 
+        margin-bottom: 15px !important; 
+        width: 100% !important;
     }
-    .socials-footer { 
-        gap: 25px; /* Rapprochement des réseaux */
-        justify-content: center; 
-        width: 100%;
-    }
-    
-    /* Intro */
-    .intro-word { font-size: 12vw; width: 90%; }
+
+    /* About Section (TEXTE COURT FORCÉ) */
+    .desktop-text { display: none !important; }
+    .mobile-text { display: block !important; }
+    .about-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
+    .about-title { font-size: 2.5rem !important; }
+
+    /* Contact Title GROSSI */
+    .contact-title { font-size: 5rem !important; } 
+
+    /* Copyright Centré */
+    .copyright { text-align: center !important; width: 100% !important; margin: 20px 0 !important; }
+    .socials-footer { gap: 20px !important; justify-content: center !important; }
 }
 
 /* Utilitaires visibilité */
