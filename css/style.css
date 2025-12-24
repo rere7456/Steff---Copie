@@ -243,17 +243,16 @@ body:not(.loading) #intro-sequence { display: none; }
 }
 .info-socials a {
     color: #fff;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
     display: flex; align-items: center; justify-content: center;
 }
-.info-socials img {
+.info-socials svg {
     width: 32px; height: 32px; /* Taille des icones */
-    object-fit: contain;
-    filter: invert(1); /* Rend les icones noires blanches pour le menu sombre */
+    stroke-width: 1.5;
 }
 .info-socials a:hover {
-    opacity: 0.7;
-    transform: translateY(-5px);
+    color: #ccc;
+    transform: translateY(-5px); /* Petite animation vers le haut */
 }
 
 /* Contenu du bloc */
