@@ -336,9 +336,30 @@ html, body {
     .hero { height: 60vh !important; width: 100% !important; }
     .hero-title { font-size: 13vw !important; }
 
-    /* Menu Overlay */
-    .menu-overlay { width: 100% !important; }
+    /* Menu Overlay (Restauré en 2 colonnes) */
+    .menu-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 15px !important; }
+    .menu-overlay { padding: 40px 20px !important; }
+    .block-title { font-size: 1.2rem !important; }
+    .menu-info-zone { padding: 15px !important; }
+    .info-mail { font-size: 0.9rem !important; }
+    .info-label { font-size: 0.7rem !important; margin-bottom: 10px !important; }
     
+    /* Filtres (Autorise le défilement horizontal) */
+    .filters-container { 
+        margin-bottom: 20px !important; 
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap !important;
+        padding-bottom: 10px !important;
+    }
+    .filter-list { 
+        display: inline-flex !important; 
+        gap: 20px !important; 
+        border-bottom: none !important; 
+        padding: 0 10px !important;
+    }
+    .filter-list li { font-size: 0.9rem !important; flex-shrink: 0 !important; }
+
     /* Galerie (FORCAGE 2 COLONNES) */
     .masonry-grid { 
         display: block !important;
@@ -350,6 +371,15 @@ html, body {
     /* About Section */
     .about-section { padding: 40px 0 !important; width: 100% !important; }
     .about-grid { display: block !important; width: 100% !important; }
+    .about-image { margin-bottom: 30px !important; }
+    .about-title { font-size: 2.2rem !important; margin-bottom: 15px !important; }
+    
+    .desktop-text { display: none !important; }
+    .mobile-text { 
+        display: block !important; 
+        font-size: 1rem !important; 
+        line-height: 1.5 !important; 
+    }
 
     /* Contact Section (Correction du débordement) */
     .contact-section { padding: 60px 0 !important; width: 100% !important; }
@@ -366,8 +396,8 @@ html, body {
         flex-direction: column !important;
         gap: 25px !important;
     }
-    .copyright { order: 2 !important; margin: 0 !important; font-size: 0.7rem !important; }
-    .socials-footer { gap: 20px !important; }
+    .copyright { order: 2 !important; margin: 0 !important; font-size: 0.7rem !important; text-align: center !important; }
+    .socials-footer { gap: 20px !important; justify-content: center !important; }
     
     /* Intro */
     .intro-word { font-size: 10vw !important; width: 100% !important; left: 0 !important; text-align: center !important; }
