@@ -114,7 +114,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('close-detail').onclick = () => {
         detailView.classList.remove('open');
+        detailView.classList.remove('fullscreen-mode'); // Reset le plein écran
         body.style.overflow = '';
+    };
+
+    // Bascule Plein Écran au clic sur l'image
+    document.getElementById('detail-img').onclick = () => {
+        detailView.classList.toggle('fullscreen-mode');
     };
 
     // 6. GESTION DU SCROLL NAVBAR
