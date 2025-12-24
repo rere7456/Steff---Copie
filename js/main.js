@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. INTRO
     window.addEventListener('load', () => {
-        setTimeout(() => body.classList.remove('loading'), 6500);
+        setTimeout(() => body.classList.remove('loading'), 5000);
     });
 
     // 2. GESTION MENU

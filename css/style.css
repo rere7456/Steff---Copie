@@ -85,27 +85,20 @@ body {
 
 /* Séquence : Mot 1 (Recherche de focus type A) */
 .word-1 { 
-    animation: opticFocusHunt1 3s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
+    animation: opticFocusHunt1 4.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
     animation-delay: 0.2s; 
 }
 
-/* Séquence : Mot 2 (Recherche de focus type B - Différente) */
-.word-2 { 
-    animation: opticFocusHunt2 3.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; 
-    animation-delay: 2.8s; 
-    font-style: italic; 
-    text-transform: none; 
-}
-
-/* Animation A : Hésitation rapide puis net */
+/* Animation A : Hésitation plus longue et marquée */
 @keyframes opticFocusHunt1 {
     0% { filter: blur(30px); transform: scale(1.15); opacity: 0; letter-spacing: 15px; }
-    20% { filter: blur(10px); transform: scale(1.05); opacity: 0.6; letter-spacing: 5px; }
-    35% { filter: blur(2px); transform: scale(1.01); opacity: 0.9; letter-spacing: 1px; } /* Presque net */
-    45% { filter: blur(6px); transform: scale(1.03); opacity: 0.8; letter-spacing: 3px; } /* On reperd un peu le point */
-    60% { filter: blur(0px); transform: scale(1); opacity: 1; letter-spacing: 0px; } /* NET ! */
-    85% { filter: blur(0px); transform: scale(1); opacity: 1; letter-spacing: 0px; } /* Reste net */
-    100% { filter: blur(20px); transform: scale(0.9); opacity: 0; letter-spacing: -2px; }
+    15% { filter: blur(15px); transform: scale(1.05); opacity: 0.6; letter-spacing: 8px; }
+    30% { filter: blur(2px); transform: scale(1.01); opacity: 0.9; letter-spacing: 1px; } /* Presque net */
+    40% { filter: blur(12px); transform: scale(1.04); opacity: 0.7; letter-spacing: 5px; } /* Reperd le point violemment */
+    55% { filter: blur(4px); transform: scale(1.02); opacity: 0.8; letter-spacing: 2px; } /* Recherche... */
+    70% { filter: blur(0px); transform: scale(1); opacity: 1; letter-spacing: 0px; } /* NET ! */
+    90% { filter: blur(0px); transform: scale(1); opacity: 1; letter-spacing: 0px; } /* Maintien du net */
+    100% { filter: blur(25px); transform: scale(0.95); opacity: 0; letter-spacing: -2px; }
 }
 
 /* Animation B : Approche plus lente, dépassement puis net */
