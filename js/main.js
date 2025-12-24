@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (target === 'contact') {
                 document.getElementById('contact-section').scrollIntoView({ behavior: 'smooth' });
+            } else if (target === 'about') {
+                document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' });
             } else {
                 // Scroll vers la galerie
                 const gallerySection = document.getElementById('gallery-section');
