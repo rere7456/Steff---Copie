@@ -319,7 +319,7 @@ body:not(.loading) #intro-sequence { display: none; }
     .text-wrapper { padding: 60px 30px; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     /* Base */
     .container { max-width: 90%; padding-bottom: 60px; }
     
