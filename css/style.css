@@ -401,6 +401,54 @@ html, body {
     .copyright { order: 2 !important; margin: 0 !important; font-size: 0.7rem !important; text-align: center !important; }
     .socials-footer { gap: 20px !important; justify-content: center !important; }
     
+    /* Vue Détail Mobile */
+    .detail-view {
+        display: flex !important;
+        flex-direction: column !important;
+        background: var(--detail-bg) !important;
+    }
+    .detail-content {
+        display: contents !important; /* Permet de réordonner les enfants directements dans detail-view */
+    }
+    .image-wrapper {
+        order: 1 !important;
+        flex: none !important;
+        height: auto !important;
+        background: transparent !important;
+    }
+    .image-wrapper img {
+        height: auto !important;
+        max-height: 70vh !important; /* Limite la hauteur pour voir le bouton dessous */
+        object-fit: contain !important; /* Garde toute l'image visible */
+    }
+    .close-detail {
+        position: static !important;
+        order: 2 !important;
+        align-self: center !important;
+        margin: 20px 0 !important;
+        padding: 10px 20px !important;
+        border: 1px solid #333 !important;
+        width: fit-content !important;
+    }
+    .text-wrapper {
+        order: 3 !important;
+        padding: 0 30px 60px 30px !important;
+    }
+
+    /* Fullscreen mobile adjustment */
+    .detail-view.fullscreen-mode {
+        display: flex !important;
+    }
+    .detail-view.fullscreen-mode .close-detail {
+        order: 2 !important;
+        color: #fff !important;
+        border-color: #fff !important;
+    }
+    .detail-view.fullscreen-mode .image-wrapper {
+        order: 1 !important;
+        height: 80vh !important;
+    }
+
     /* Intro */
     .intro-word { font-size: 10vw !important; width: 100% !important; left: 0 !important; text-align: center !important; }
 }
