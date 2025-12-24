@@ -494,7 +494,17 @@ html, body {
     margin: 0; 
     text-align: left;
 }
-/* ... reste du titre hero ... */
+.hero-title .line { 
+    display: block; 
+    opacity: 0; 
+    transform: translateY(30px); 
+    animation: reveal 1s forwards;
+}
+/* Effet Quinconce Restauré */
+.hero-title .line:nth-child(1) { animation-delay: 0.2s; margin-left: 0; }
+.hero-title .line:nth-child(2) { animation-delay: 0.4s; margin-left: 10vw; font-style: italic; }
+.hero-title .line:nth-child(3) { animation-delay: 0.6s; margin-left: 5vw; }
+@keyframes reveal { to { opacity: 1; transform: translateY(0); } }
 
 /* =========================================
    MAIN SECTION (Le rideau noir qui monte)
