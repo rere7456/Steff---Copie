@@ -156,13 +156,19 @@
             <div class="contact-content">
                 <span class="meta-category">Discutons de votre projet</span>
                 <h2 class="contact-title">Contact</h2>
-                <div class="contact-details">
-                    <a href="mailto:stephane.basset.41@gmail.com" class="contact-link">stephane.basset.41@gmail.com</a>
-                    <div class="contact-socials">
-                        <a href="https://www.instagram.com/stephanebas?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
-                        <a href="https://www.linkedin.com/in/st%C3%A9phane-b-5b8947152" target="_blank">LinkedIn</a>
-                        <a href="https://www.facebook.com/stephane.bass1" target="_blank">Facebook</a>
-                    </div>
+                <div class="contact-form-container">
+                    <form action="https://formspree.io/f/mqakpeqz" method="POST" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="name" required placeholder="Votre Nom">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" required placeholder="Votre Email">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" rows="4" required placeholder="Votre Message"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Envoyer</button>
+                    </form>
                 </div>
             </div>
         </div>

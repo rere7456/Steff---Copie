@@ -22,6 +22,14 @@
     font-weight: normal; font-style: normal;
 }
 
+/* Police spécifique pour la ponctuation standard (Roboto Light) */
+@font-face {
+    font-family: 'StandardPunctuation';
+    src: local('Roboto Light'), local('Roboto-Light');
+    /* Couvre : Ponctuation basique, tirets, guillemets, degré... */
+    unicode-range: U+0021-002F, U+003A-0040, U+005B-0060, U+007B-007E, U+00A0-00BF, U+2000-206F;
+}
+
 :root {
     --bg-color: #fdfbf7;
     --text-color: #111111; 
@@ -486,7 +494,7 @@ main {
 }
 
 /* =========================================
-   SECTION CONTACT
+   SECTION CONTACT (FORMULAIRE)
    ========================================= */
 .contact-section {
     position: relative;
@@ -498,6 +506,8 @@ main {
 }
 
 .contact-content {
+    max-width: 600px;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -505,41 +515,61 @@ main {
     font-family: var(--font-title);
     font-size: 6vw;
     font-style: italic;
-    margin: 20px 0 40px 0;
+    margin: 20px 0 60px 0;
 }
 
-.contact-link {
-    font-family: var(--font-title);
-    font-size: 3vw;
-    color: #ffffff;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 40px;
-    transition: opacity 0.3s ease;
+/* Formulaire Styles */
+.contact-form-container {
+    margin-top: 40px;
+    text-align: left;
 }
 
-.contact-link:hover {
-    opacity: 0.5;
+.form-group {
+    margin-bottom: 30px;
 }
 
-.contact-socials {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #333;
+    padding: 15px 0;
+    color: #fff;
+    font-family: var(--font-tech);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-bottom-color: #fff;
+}
+
+.contact-form input::placeholder, .contact-form textarea::placeholder {
+    color: #444;
+}
+
+.submit-btn {
+    background: transparent;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 15px 40px;
     font-family: var(--font-tech);
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    width: 100%;
 }
 
-.contact-socials a {
-    color: #666;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.contact-socials a:hover {
-    color: #ffffff;
+.submit-btn:hover {
+    background: #fff;
+    color: #000;
 }
 
 footer {
