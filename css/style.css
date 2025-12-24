@@ -576,12 +576,41 @@ footer {
     position: relative;
     z-index: 2;
     background-color: #0a0a0a;
-    padding: 80px 60px; 
+    padding: 40px 60px; /* Réduit de 80px à 40px */
     border-top: 1px solid #222;
-    display: flex; justify-content: space-between;
+    display: flex; justify-content: space-between; align-items: center;
     font-size: 0.8rem; text-transform: uppercase; color: #666;
 }
-.socials a { margin-left: 20px; color: inherit; }
+
+.copyright {
+    align-self: flex-end; /* Calé en bas */
+    margin-bottom: 5px;
+}
+
+.socials-footer {
+    display: flex; gap: 30px;
+}
+
+.socials-footer a {
+    display: flex; flex-direction: column; align-items: center;
+    color: #666; text-decoration: none;
+    transition: color 0.3s ease;
+    gap: 5px;
+}
+
+.socials-footer svg {
+    width: 20px; height: 20px;
+}
+
+.socials-footer span {
+    font-size: 0.65rem; letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+.socials-footer a:hover {
+    color: #fff;
+}
+.socials-footer a:hover span { opacity: 1; }
 
 /* Mobiles */
 @media (max-width: 1024px) { 
