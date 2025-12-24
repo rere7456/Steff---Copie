@@ -336,13 +336,14 @@ html, body {
     .hero { height: 60vh !important; width: 100% !important; }
     .hero-title { font-size: 13vw !important; }
 
-    /* Menu Overlay (Restauré en 2 colonnes) */
-    .menu-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 15px !important; }
-    .menu-overlay { padding: 40px 20px !important; }
-    .block-title { font-size: 1.2rem !important; }
-    .menu-info-zone { padding: 15px !important; }
-    .info-mail { font-size: 0.9rem !important; }
-    .info-label { font-size: 0.7rem !important; margin-bottom: 10px !important; }
+    /* Menu Overlay (Une seule colonne) */
+    .menu-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+    .menu-overlay { padding: 60px 20px !important; overflow-y: auto !important; }
+    .menu-block { min-height: 100px !important; }
+    .block-title { font-size: 1.5rem !important; }
+    .menu-info-zone { padding: 20px !important; }
+    .info-mail { font-size: 1.1rem !important; }
+    .info-label { font-size: 0.8rem !important; margin-bottom: 10px !important; }
     
     /* Filtres (Autorise le défilement horizontal) */
     .filters-container { 
